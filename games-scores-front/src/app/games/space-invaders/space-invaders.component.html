@@ -1,0 +1,26 @@
+<canvas #canvas style="background: black"></canvas>
+<br />
+<small>Hit start to GO, ← and → to move and space to shoot</small>
+<p>
+  <label *ngIf="lives <= 0">Game Over</label>
+</p>
+<p>
+  <label>Score: {{ score }}</label>
+</p>
+<p>
+  <label>Round: {{ round }}</label>
+</p>
+<p>
+  <label>Lives: {{ lives }} </label>
+</p>
+<button (click)="play()" class="play-button button" *ngIf="!gameStarted">
+  Play
+</button>
+<br />
+<button (click)="play()" class="reset-button button" *ngIf="gameStarted">
+  Reset
+</button>
+<br />
+<button (click)="pause()" class="pause-button button" *ngIf="gameStarted">
+  Pause
+</button>
