@@ -42,5 +42,8 @@
         <a class="nav-link" routerLink="/contact-create">About</a>
       </li>
     </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <span class="navbar-text" *ngIf="userName"> {{ userName }} </span>
+    </form>
   </div>
 </nav>

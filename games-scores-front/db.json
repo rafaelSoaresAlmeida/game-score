@@ -1,0 +1,46 @@
+{
+  "tetrisScore": [
+    {
+      "userName": "eu mesmo",
+      "score": "1000"
+    },
+    {
+      "userName": "julia",
+      "score": "2000"
+    },
+    {
+      "userName": "kotoko",
+      "score": "20"
+    },
+    {
+      "userName": "Balada",
+      "score": "150"
+    },
+    {
+      "userName": "Brandao",
+      "score": "0"
+    }
+  ],
+  "spaceInvadersScore": [
+    {
+      "userName": "eu mesmo",
+      "score": "20000"
+    },
+    {
+      "userName": "julia",
+      "score": "5000"
+    },
+    {
+      "userName": "kotoko",
+      "score": "200250"
+    },
+    {
+      "userName": "Balada",
+      "score": "0"
+    },
+    {
+      "userName": "Brandao",
+      "score": "1"
+    }
+  ]
+}
