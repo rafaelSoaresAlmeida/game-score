@@ -16,6 +16,9 @@ import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './security/login/login.component';
 import { LoginService } from './security/login.service';
 import { LoginActivate } from './security/logginActivate';
+import { RankService } from './games/rank.service';
+import { ScoreGridComponent } from './shared/score-grid/score-grid.component';
+import { HomeModule } from './home/home..module';
 
 @NgModule({
   declarations: [
@@ -26,16 +29,18 @@ import { LoginActivate } from './security/logginActivate';
     TetrisComponent,
     AboutComponent,
     LoginComponent,
+    ScoreGridComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(ROUTES),
+    HomeModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [LoginService, LoginActivate],
+  providers: [LoginService, LoginActivate, RankService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { LoginService } from '../security/login.service';
 
 @Component({
@@ -6,20 +7,21 @@ import { LoginService } from '../security/login.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   userName: string;
+  subscriptionName: Subscription;
 
   constructor(private loginService: LoginService) {}
 
   ngOnInit() {
-    this.loginService.userNameEvent$.subscribe((name) => {
-      this.userName = name;
-    });
+    this.subscriptionName = this.loginService.userNameEvent$.subscribe(
+      (name) => {
+        this.userName = name;
+      }
+    );
   }
 
-  setUserName() {
-    if (this.loginService.isLoggedIn()) {
-      this.userName = this.loginService.user.name;
-    }
+  ngOnDestroy() {
+    this.subscriptionName.unsubscribe();
   }
 }

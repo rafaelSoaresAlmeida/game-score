@@ -1,7 +1,22 @@
 <div class="jumbotron" style="background-color: #fff; height: calc(95vh)">
-  <h1>Angular Bootstrap Demo</h1>
-  <p class="lead">
-    This demo shows how to integrate Bootstrap 4 with Angular 7
-  </p>
-  <a class="btn btn-lg btn-primary" href="" role="button">View tutorial</a>
+  <h1>Games Best Scores</h1>
+  <p class="lead">Get your best score!!</p>
+
+  <div>
+    <h2>Space Invaders Best Scores</h2>
+    <ul>
+      <li *ngFor="let spaceScore of spaceInvadersScores">
+        {{ spaceScore.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h2>Tetris Best Scores</h2>
+    <ul>
+      <li *ngFor="let tetrisScore of tetrisScores">
+        {{ tetrisScore.name }}
+      </li>
+    </ul>
+  </div>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RankService } from '../games/rank.service';
+import { Score } from '../games/score.model';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  spaceInvadersScores: Score[];
+  tetrisScores: Score[];
 
-  ngOnInit(): void {}
+  constructor(private rankService: RankService) {}
+
+  ngOnInit() {
+    this.rankService
+      .getSpaceInvadersScore()
+      .subscribe((scores) => (this.spaceInvadersScores = scores));
+
+    this.rankService
+      .getTetrisScore()
+      .subscribe((scores) => (this.tetrisScores = scores));
+  }
 }
