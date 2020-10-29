@@ -18,4 +18,17 @@ export class RankService {
       'https://localhost:3001/spaceInvadersScore'
     );
   }
+
+  persistTetrisScore(score: Score): Observable<any> {
+    return this.httpClient.post<Score>('https://localhost:3001/tetrisScore', {
+      score,
+    });
+  }
+
+  persistSpaceInvadersScore(score: Score): Observable<any> {
+    return this.httpClient.post<Score>(
+      'https://localhost:3001/spaceInvadersScore',
+      { score }
+    );
+  }
 }

@@ -1,6 +1,8 @@
-.footer {
-  flex-shrink: 0;
-  flex-grow: 0;
-  background: #eee;
-  padding: 3px 15px;
+section {
+  height: calc(80vh);
+  /* - Height: calc(100vh - (navheight + footer))
+     - Over flow y make the dive scrollable 
+  when it exceed the fixed height*/
+  overflow-y: auto;
+  transition: all 0.5s;
 }

@@ -19,6 +19,8 @@ import { LoginActivate } from './security/logginActivate';
 import { RankService } from './games/rank.service';
 import { ScoreGridComponent } from './shared/score-grid/score-grid.component';
 import { HomeModule } from './home/home..module';
+import { AuthInterceptor } from './security/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,12 @@ import { HomeModule } from './home/home..module';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [LoginService, LoginActivate, RankService],
+  providers: [
+    LoginService,
+    LoginActivate,
+    RankService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

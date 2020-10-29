@@ -14,7 +14,8 @@ server.use(middlewares);
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
 server.post('/login', auth_1.handleAuthentication);
-server.use('/orders', authz_1.handleAuthorization);
+server.post('/tetrisScore', authz_1.handleAuthorization);
+server.post('/spaceInvadersScore', authz_1.handleAuthorization);
 // Use default router
 server.use(router);
 var options = {

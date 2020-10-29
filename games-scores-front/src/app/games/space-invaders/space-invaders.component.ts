@@ -14,6 +14,9 @@ import { ParticalCluster } from '../space-invaders/actor/ParticalCluster';
 import { KEY } from '../../utils/constants';
 
 import { spawnSquadOfEnemies } from '../../utils/gameUtils';
+import { RankService } from '../rank.service';
+import { Score } from '../score.model';
+import { LoginService } from 'src/app/security/login.service';
 
 @Component({
   selector: 'app-space-invaders',
@@ -26,7 +29,7 @@ export class SpaceInvadersComponent implements OnInit {
 
   ctx: CanvasRenderingContext2D;
 
-  lives = 3;
+  lives = 1;
   score = 0;
   round = 0;
 
@@ -38,6 +41,8 @@ export class SpaceInvadersComponent implements OnInit {
 
   gameStarted: boolean;
   paused: boolean;
+  animateId: number;
+  scoreObj: Score;
 
   @HostListener('window:keydown', ['$event'])
   keyEvent(event: KeyboardEvent) {
@@ -56,7 +61,10 @@ export class SpaceInvadersComponent implements OnInit {
 
   keys: { [key: number]: boolean } = {};
 
-  constructor() {}
+  constructor(
+    private rankService: RankService,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit(): void {
     // get the context
@@ -104,15 +112,32 @@ export class SpaceInvadersComponent implements OnInit {
     this.enemies = spawnSquadOfEnemies(this.round, this.ctx);
   }
 
+  gameOver() {
+    cancelAnimationFrame(this.animateId);
+    this.gameStarted = false;
+    /*     this.ctx.fillStyle = 'black';
+    this.ctx.fillRect(1, 3, 8, 1.2);
+    this.ctx.font = '1px Arial';
+    this.ctx.fillStyle = 'red';
+    this.ctx.fillText('GAME OVER', 1.8, 4); */
+    this.scoreObj = {
+      name: this.loginService.user.name,
+      score: this.score.toString(),
+    };
+    this.rankService
+      .persistSpaceInvadersScore(this.scoreObj)
+      .subscribe((response) => console.log(response));
+  }
+
   gameLoop = () => {
-    requestAnimationFrame(this.gameLoop);
+    this.animateId = requestAnimationFrame(this.gameLoop);
 
     if (!this.paused) {
       // Clear the canvas to be redrawn
       this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
       if (this.lives <= 0) {
-        this.gameStarted = false;
+        this.gameOver();
         return;
       }
 

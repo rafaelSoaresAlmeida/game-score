@@ -2,21 +2,51 @@
   <h1>Games Best Scores</h1>
   <p class="lead">Get your best score!!</p>
 
-  <div>
-    <h2>Space Invaders Best Scores</h2>
-    <ul>
-      <li *ngFor="let spaceScore of spaceInvadersScores">
-        {{ spaceScore.name }}
-      </li>
-    </ul>
-  </div>
+  <h2>Space Invaders Score</h2>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Position</th>
+        <th scope="col">Name</th>
+        <th scope="col">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let spaceScore of spaceInvadersScores; let i = index">
+        <th scope="row" style="background-color: #b9def0">
+          {{ i + 1 }}
+        </th>
+        <td style="background-color: #b9def0">
+          {{ spaceScore.name }}
+        </td>
+        <td style="background-color: #b9def0">
+          {{ spaceScore.score }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-  <div>
-    <h2>Tetris Best Scores</h2>
-    <ul>
-      <li *ngFor="let tetrisScore of tetrisScores">
-        {{ tetrisScore.name }}
-      </li>
-    </ul>
-  </div>
+  <h2>Tetris Score</h2>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Position</th>
+        <th scope="col">Name</th>
+        <th scope="col">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tetrisScore of tetrisScores; let i = index">
+        <th scope="row" style="background-color: #b9def0">
+          {{ i + 1 }}
+        </th>
+        <td style="background-color: #b9def0">
+          {{ tetrisScore.name }}
+        </td>
+        <td style="background-color: #b9def0">
+          {{ tetrisScore.score }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

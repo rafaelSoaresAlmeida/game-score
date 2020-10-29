@@ -17,6 +17,9 @@ import {
 } from '../../utils/constants';
 import { Piece, IPiece } from './piece.component';
 import { GameService } from './game.service';
+import { RankService } from '../rank.service';
+import { Score } from '../score.model';
+import { LoginService } from 'src/app/security/login.service';
 
 @Component({
   selector: 'app-tetris',
@@ -38,6 +41,7 @@ export class TetrisComponent implements OnInit {
   points: number;
   lines: number;
   level: number;
+  score: Score;
   moves = {
     [KEY.LEFT]: (p: IPiece): IPiece => ({ ...p, x: p.x - 1 }),
     [KEY.RIGHT]: (p: IPiece): IPiece => ({ ...p, x: p.x + 1 }),
@@ -70,7 +74,11 @@ export class TetrisComponent implements OnInit {
     }
   }
 
-  constructor(private service: GameService) {}
+  constructor(
+    private service: GameService,
+    private rankService: RankService,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit() {
     this.initBoard();
@@ -207,6 +215,13 @@ export class TetrisComponent implements OnInit {
     this.ctx.font = '1px Arial';
     this.ctx.fillStyle = 'red';
     this.ctx.fillText('GAME OVER', 1.8, 4);
+    this.score = {
+      name: this.loginService.user.name,
+      score: this.lines.toString(),
+    };
+    this.rankService
+      .persistTetrisScore(this.score)
+      .subscribe((response) => console.log(response));
   }
 
   getEmptyBoard(): number[][] {

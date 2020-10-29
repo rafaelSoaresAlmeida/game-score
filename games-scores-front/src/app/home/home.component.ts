@@ -10,6 +10,7 @@ import { Score } from '../games/score.model';
 export class HomeComponent implements OnInit {
   spaceInvadersScores: Score[];
   tetrisScores: Score[];
+  head: string[] = ['name', 'score'];
 
   constructor(private rankService: RankService) {}
 

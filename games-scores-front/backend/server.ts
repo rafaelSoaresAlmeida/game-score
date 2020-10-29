@@ -20,7 +20,8 @@ server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
 server.post('/login', handleAuthentication);
-server.use('/orders', handleAuthorization);
+server.post('/tetrisScore', handleAuthorization);
+server.post('/spaceInvadersScore', handleAuthorization);
 
 // Use default router
 server.use(router);
