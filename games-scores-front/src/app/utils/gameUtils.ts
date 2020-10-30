@@ -32,12 +32,10 @@ export function spawnSquadOfEnemies(
       this.spawnRowOfEnemies(20 * i);
     } */
 
-  console.log('chegou aqui 1');
   return spawnRowOfEnemies(20, ctx);
 }
 
 function spawnRowOfEnemies(yOffSet: number, ctx: CanvasRenderingContext2D) {
-  console.log('chegou aqui 2');
   let enemies: Enemy[] = [];
   for (let i = 0; i < ctx.canvas.height / 20; i++) {
     if (Math.random() < 0.01) {

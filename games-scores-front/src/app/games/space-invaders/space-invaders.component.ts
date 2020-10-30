@@ -115,11 +115,6 @@ export class SpaceInvadersComponent implements OnInit {
   gameOver() {
     cancelAnimationFrame(this.animateId);
     this.gameStarted = false;
-    /*     this.ctx.fillStyle = 'black';
-    this.ctx.fillRect(1, 3, 8, 1.2);
-    this.ctx.font = '1px Arial';
-    this.ctx.fillStyle = 'red';
-    this.ctx.fillText('GAME OVER', 1.8, 4); */
     this.scoreObj = {
       name: this.loginService.user.name,
       score: this.score.toString(),

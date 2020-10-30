@@ -2,9 +2,9 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap, filter } from 'rxjs/operators';
-//import { MEAT_API } from "app/app.api";
 import { User } from './user.model';
 import { NavigationEnd, Router } from '@angular/router';
+import { SCORE_API } from '../app.api';
 
 @Injectable()
 export class LoginService {
@@ -19,21 +19,16 @@ export class LoginService {
   }
 
   login(email: string, password: string): Observable<User> {
-    return (
-      this.httpClient
-        // .post<User>(`${GAME_API}/login`, { email: email, password: password })
-        .post<User>('https://localhost:3001/login', {
-          email: email,
-          password: password,
-        })
-        .pipe(
-          tap((user) => (this.user = user)),
-          tap(() => this.userNameEvent$.emit(this.user.name))
-        )
-    );
+    return this.httpClient
+      .post<User>(`${SCORE_API}/login`, {
+        email: email,
+        password: password,
+      })
+      .pipe(
+        tap((user) => (this.user = user)),
+        tap(() => this.userNameEvent$.emit(this.user.name))
+      );
   }
-
-  // this.userNameEvent$.emit(this.user.name);
 
   isLoggedIn(): boolean {
     return this.user !== undefined;
