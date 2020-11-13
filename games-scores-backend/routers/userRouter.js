@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const authenticationService = require("../services/authenticationService");
 const userService = require("../services/userService");
+const authorization = require("../middleware/authorization");
 
 module.exports = (app) => {
   app.post("/user/login", async (req, res) => {
@@ -17,17 +18,15 @@ module.exports = (app) => {
 
       res.send({ user, token });
     } catch (error) {
-      console.log("error---------> " + error);
       res.status(400).send({ error: error.message });
     }
   });
 
-  app.post("/user", async (req, res) => {
+  app.post("/user", authorization, async (req, res) => {
     try {
       const userCreated = await userService.createUser(req);
       res.send({ userCreated });
     } catch (error) {
-      console.log("error---------> " + error);
       res.status(400).send({ error: error.message });
     }
   });

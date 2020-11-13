@@ -1,25 +1,29 @@
-<br />
-<br />
-<br />
-<br />
-<div class="grid">
-  <canvas #canvas style="background: black"></canvas>
-  <div class="right-column">
-    <div>
-      <h1>Space Invaders Generic</h1>
-      <p>
-        <label *ngIf="lives <= 0">Game Over</label>
-      </p>
-      <p>Score: {{ score }}</p>
-      <p>Level: {{ round }}</p>
-      <p>Lives: {{ lives }}</p>
-      <p>High Score:</p>
-      <!-- <p>{{ highScore }}</p> -->
-      <canvas #next class="next"></canvas>
+<div
+  style="background-image: url(../../assets/space.jpg); background-size: 100%"
+>
+  <br />
+  <br />
+  <br />
+  <br />
+  <div class="grid">
+    <canvas #canvas style="background: black"></canvas>
+    <div class="right-column">
+      <div>
+        <h1 style="color: red">Generic Space Invaders</h1>
+        <p>
+          <label *ngIf="lives <= 0" style="color: red">Game Over</label>
+        </p>
+        <p style="color: red">Score: {{ score }}</p>
+        <p style="color: red">Level: {{ round }}</p>
+        <p style="color: red">Lives: {{ lives }}</p>
+        <p style="color: red">High Score:</p>
+        <!-- <p>{{ highScore }}</p> -->
+        <canvas #next class="next"></canvas>
+      </div>
+      <button (click)="play()" class="game-button" *ngIf="!gameStarted">
+        Play
+      </button>
+      <button (click)="pause()" class="game-button">Pause</button>
     </div>
-    <button (click)="play()" class="game-button" *ngIf="!gameStarted">
-      Play
-    </button>
-    <button (click)="pause()" class="game-button">Pause</button>
   </div>
 </div>

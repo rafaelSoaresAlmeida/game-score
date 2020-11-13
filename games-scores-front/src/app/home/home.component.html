@@ -1,52 +1,42 @@
-<div class="jumbotron" style="background-color: #fff; height: calc(95vh)">
-  <h1>Games Best Scores</h1>
+<div class="jumbotron">
+  <h1>Best Scores</h1>
   <p class="lead">Get your best score!!</p>
 
-  <h2>Space Invaders Score</h2>
-  <table class="table">
-    <thead class="thead-dark">
+  <p-table [value]="spaceInvadersScores" styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="caption"> Space Invaders Score </ng-template>
+    <ng-template pTemplate="header">
       <tr>
-        <th scope="col">Position</th>
-        <th scope="col">Name</th>
-        <th scope="col">Score</th>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Score</th>
       </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let spaceScore of spaceInvadersScores; let i = index">
-        <th scope="row" style="background-color: #b9def0">
-          {{ i + 1 }}
-        </th>
-        <td style="background-color: #b9def0">
-          {{ spaceScore.name }}
-        </td>
-        <td style="background-color: #b9def0">
-          {{ spaceScore.score }}
-        </td>
+    </ng-template>
+    <ng-template pTemplate="body" let-spaceScore let-i="rowIndex">
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>{{ spaceScore.name }}</td>
+        <td>{{ spaceScore.score }}</td>
       </tr>
-    </tbody>
-  </table>
+    </ng-template>
+  </p-table>
 
-  <h2>Tetris Score</h2>
-  <table class="table">
-    <thead class="thead-dark">
+  <br />
+
+  <p-table [value]="tetrisScores" styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="caption"> Tetris Score </ng-template>
+    <ng-template pTemplate="header">
       <tr>
-        <th scope="col">Position</th>
-        <th scope="col">Name</th>
-        <th scope="col">Score</th>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Score</th>
       </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let tetrisScore of tetrisScores; let i = index">
-        <th scope="row" style="background-color: #b9def0">
-          {{ i + 1 }}
-        </th>
-        <td style="background-color: #b9def0">
-          {{ tetrisScore.name }}
-        </td>
-        <td style="background-color: #b9def0">
-          {{ tetrisScore.score }}
-        </td>
+    </ng-template>
+    <ng-template pTemplate="body" let-tetrisScore let-i="rowIndex">
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>{{ tetrisScore.name }}</td>
+        <td>{{ tetrisScore.score }}</td>
       </tr>
-    </tbody>
-  </table>
+    </ng-template>
+  </p-table>
 </div>

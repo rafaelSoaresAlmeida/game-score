@@ -1,13 +1,13 @@
 const Score = require("../models/Score");
 const scoreService = require("../services/scoreService");
+const authorization = require("../middleware/authorization");
 
 module.exports = (app) => {
-  app.post("/score", async (req, res) => {
+  app.post("/score", authorization, async (req, res) => {
     try {
       const scoreResult = await scoreService.createScore(new Score(req.body));
       res.send({ scoreResult });
     } catch (error) {
-      console.log("error---------> " + error);
       res.status(400).send({ error: error.message });
     }
   });

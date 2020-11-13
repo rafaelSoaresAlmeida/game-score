@@ -5,6 +5,8 @@
 .grid {
   display: grid;
   grid-template-columns: 320px 200px;
+  justify-content: center;
+  align-items: center;
 }
 
 .right-column {

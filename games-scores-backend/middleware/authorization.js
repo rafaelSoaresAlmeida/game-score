@@ -5,7 +5,7 @@ const authenticationService = require("../services/authenticationService");
 
 const auth = async (req, res, next) => {
   try {
-    const user = authenticationService.getUserOnRequest(req);
+    const user = await authenticationService.getUserOnRequest(req);
 
     if (!user) {
       throw new Error();
