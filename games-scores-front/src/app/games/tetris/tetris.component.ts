@@ -68,7 +68,7 @@ export class TetrisComponent implements OnInit {
       } else if (this.service.valid(p, this.board)) {
         this.piece.move(p);
         if (event.keyCode === KEY.DOWN) {
-          this.points += POINTS.SOFT_DROP;
+          //   this.points += POINTS.SOFT_DROP;
         }
       }
     }

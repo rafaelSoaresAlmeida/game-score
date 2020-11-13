@@ -1,9 +1,14 @@
-<div class="jumbotron">
-  <h1>Best Scores</h1>
-  <p class="lead">Get your best score!!</p>
+<br />
+<br />
+<br />
+<br />
+
+<div class="jumbotron bg-dark">
+  <h1 style="color: crimson">Best Scores</h1>
+  <p class="lead" style="color: #ffffff">Get your best score!!</p>
 
   <p-table [value]="spaceInvadersScores" styleClass="p-datatable-gridlines">
-    <ng-template pTemplate="caption"> Space Invaders Score </ng-template>
+    <ng-template pTemplate="caption"> Generic Space Invaders</ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th>Position</th>
@@ -23,7 +28,7 @@
   <br />
 
   <p-table [value]="tetrisScores" styleClass="p-datatable-gridlines">
-    <ng-template pTemplate="caption"> Tetris Score </ng-template>
+    <ng-template pTemplate="caption"> Tetris </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th>Position</th>
