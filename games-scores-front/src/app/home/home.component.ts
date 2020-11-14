@@ -8,19 +8,24 @@ import { Score } from '../games/score.model';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  spaceInvadersScores: Score[];
-  tetrisScores: Score[];
+  spaceInvadersScores = [];
+  tetrisScores = [];
   head: string[] = ['name', 'score'];
+  TETRIS_SCORE = 'tetris';
+  SPACE_INVADERS_SCORE = 'space';
+  teste;
 
   constructor(private rankService: RankService) {}
 
   ngOnInit() {
     this.rankService
-      .getSpaceInvadersScore()
-      .subscribe((scores) => (this.spaceInvadersScores = scores));
+      .getScore(this.SPACE_INVADERS_SCORE)
+      .subscribe(
+        (resp) => (this.spaceInvadersScores = resp[Object.keys(resp)[0]])
+      );
 
     this.rankService
-      .getTetrisScore()
-      .subscribe((scores) => (this.tetrisScores = scores));
+      .getScore(this.TETRIS_SCORE)
+      .subscribe((resp) => (this.tetrisScores = resp[Object.keys(resp)[0]]));
   }
 }

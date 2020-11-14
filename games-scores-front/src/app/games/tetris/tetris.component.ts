@@ -218,6 +218,7 @@ export class TetrisComponent implements OnInit {
     this.score = {
       name: this.loginService.user.name,
       score: this.lines.toString(),
+      game: 'tetris',
     };
     this.rankService
       .persistTetrisScore(this.score)

@@ -3,15 +3,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Score } from './score.model';
 import { SCORE_API } from '../app.api';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RankService {
-  TETRIS_SCORE = '/tetrisScore';
-  SPACE_INVADERS_SCORE = '/spaceInvadersScore';
+  TETRIS_SCORE = 'tetrisScore';
+  SPACE_INVADERS_SCORE = 'spaceInvadersScore';
+  SCORE = '/score/';
 
   constructor(private httpClient: HttpClient) {}
+
+  getScore(game: string): Observable<any[]> {
+    return this.httpClient.get<any[]>(SCORE_API + this.SCORE + game);
+    // .pipe(map((response) => response));
+  }
 
   getTetrisScore(): Observable<Score[]> {
     return this.httpClient.get<Score[]>(SCORE_API + this.TETRIS_SCORE);

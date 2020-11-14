@@ -1,4 +1,5 @@
 export interface Score {
-  name: string;
-  score: string;
+  name: String;
+  score: String;
+  game: String;
 }

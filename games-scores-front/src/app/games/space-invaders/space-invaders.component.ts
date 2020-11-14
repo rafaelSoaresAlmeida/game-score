@@ -118,6 +118,7 @@ export class SpaceInvadersComponent implements OnInit {
     this.scoreObj = {
       name: this.loginService.user.name,
       score: this.score.toString(),
+      game: 'space',
     };
     this.rankService
       .persistSpaceInvadersScore(this.scoreObj)

@@ -20,7 +20,7 @@ export class LoginService {
 
   login(email: string, password: string): Observable<User> {
     return this.httpClient
-      .post<User>(`${SCORE_API}/login`, {
+      .post<User>(`${SCORE_API}/user/login`, {
         email: email,
         password: password,
       })
