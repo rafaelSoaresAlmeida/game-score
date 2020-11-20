@@ -20,13 +20,23 @@ export class LoginService {
 
   login(email: string, password: string): Observable<User> {
     return this.httpClient
-      .post<User>(`${SCORE_API}/user/login`, {
+      .post<any>(`${SCORE_API}/user/login`, {
         email: email,
         password: password,
       })
       .pipe(
-        tap((user) => (this.user = user)),
-        tap(() => this.userNameEvent$.emit(this.user.name))
+        tap(
+          (resp) => {
+            (this.user = {
+              name: resp.user.name,
+              email: resp.user.email,
+              token: resp.token,
+            }),
+              this.userNameEvent$.emit(this.user.name);
+          },
+          tap(() => console.log('aquiiiiii' + this.user))
+          //   tap(() => this.userNameEvent$.emit(this.user.name))
+        )
       );
   }
 

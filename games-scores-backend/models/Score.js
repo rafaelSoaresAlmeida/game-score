@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const scoreSchema = new Schema({
   name: String,
+  email: String,
   score: String,
   game: String,
 });

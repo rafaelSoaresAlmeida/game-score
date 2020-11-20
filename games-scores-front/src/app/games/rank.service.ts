@@ -17,15 +17,12 @@ export class RankService {
 
   getScore(game: string): Observable<any[]> {
     return this.httpClient.get<any[]>(SCORE_API + this.SCORE + game);
-    // .pipe(map((response) => response));
   }
 
-  getTetrisScore(): Observable<Score[]> {
-    return this.httpClient.get<Score[]>(SCORE_API + this.TETRIS_SCORE);
-  }
-
-  getSpaceInvadersScore(): Observable<Score[]> {
-    return this.httpClient.get<Score[]>(SCORE_API + this.SPACE_INVADERS_SCORE);
+  persistScore(score: Score): Observable<any> {
+    return this.httpClient.post<Score>(SCORE_API + this.SCORE, {
+      score,
+    });
   }
 
   persistTetrisScore(score: Score): Observable<any> {

@@ -217,11 +217,13 @@ export class TetrisComponent implements OnInit {
     this.ctx.fillText('GAME OVER', 1.8, 4);
     this.score = {
       name: this.loginService.user.name,
+      email: this.loginService.user.email,
       score: this.lines.toString(),
       game: 'tetris',
     };
+    console.log(this.score);
     this.rankService
-      .persistTetrisScore(this.score)
+      .persistScore(this.score)
       .subscribe((response) => console.log(response));
   }
 

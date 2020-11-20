@@ -1,6 +1,13 @@
 const Score = require("../models/Score");
 
 async function createScore(scoreReq) {
+  /*   console.log("score ===>" + scoreReq);
+
+  console.log("email ===>" + scoreReq.email);
+  console.log("name ===>" + scoreReq.name);
+  console.log("score ===>" + scoreReq.score);
+  console.log("game ===>" + scoreReq.game); */
+
   scoreDb = await Score.findByEmailAndGame(scoreReq.email, scoreReq.game);
 
   if (!scoreDb) {

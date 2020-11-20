@@ -5,7 +5,9 @@ const authorization = require("../middleware/authorization");
 module.exports = (app) => {
   app.post("/score", authorization, async (req, res) => {
     try {
-      const scoreResult = await scoreService.createScore(new Score(req.body));
+      const scoreResult = await scoreService.createScore(
+        new Score(req.body.score)
+      );
       res.send({ scoreResult });
     } catch (error) {
       res.status(400).send({ error: error.message });

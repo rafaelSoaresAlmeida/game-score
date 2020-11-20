@@ -117,6 +117,7 @@ export class SpaceInvadersComponent implements OnInit {
     this.gameStarted = false;
     this.scoreObj = {
       name: this.loginService.user.name,
+      email: this.loginService.user.email,
       score: this.score.toString(),
       game: 'space',
     };
