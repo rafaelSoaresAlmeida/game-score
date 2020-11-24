@@ -14,14 +14,12 @@ console.log("Mongol => " + keys.mongoURI);
 
 mongoose.connect(keys.mongoURI);
 
-/* 
-
 app.use(
   cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
     keys: [keys.cookieKey],
   })
-); */
+);
 
 require("./routers/userRouter")(app);
 require("./routers/scoreRouter")(app);
