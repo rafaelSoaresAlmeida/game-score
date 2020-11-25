@@ -11,28 +11,16 @@ import { map } from 'rxjs/operators';
 export class RankService {
   TETRIS_SCORE = 'tetrisScore';
   SPACE_INVADERS_SCORE = 'spaceInvadersScore';
-  SCORE = '/score/';
+  SCORE = '/score';
 
   constructor(private httpClient: HttpClient) {}
 
   getScore(game: string): Observable<any[]> {
-    return this.httpClient.get<any[]>(SCORE_API + this.SCORE + game);
+    return this.httpClient.get<any[]>(SCORE_API + this.SCORE + '/' + game);
   }
 
   persistScore(score: Score): Observable<any> {
     return this.httpClient.post<Score>(SCORE_API + this.SCORE, {
-      score,
-    });
-  }
-
-  persistTetrisScore(score: Score): Observable<any> {
-    return this.httpClient.post<Score>(SCORE_API + this.TETRIS_SCORE, {
-      score,
-    });
-  }
-
-  persistSpaceInvadersScore(score: Score): Observable<any> {
-    return this.httpClient.post<Score>(SCORE_API + this.SPACE_INVADERS_SCORE, {
       score,
     });
   }

@@ -51,3 +51,17 @@ function spawnRowOfEnemies(yOffSet: number, ctx: CanvasRenderingContext2D) {
 
   return enemies;
 }
+
+export function buildScoreObject(
+  userName: String,
+  userEmail: String,
+  score: String,
+  userGame: String
+) {
+  return {
+    name: userName,
+    email: userEmail,
+    score: score,
+    game: userGame,
+  };
+}

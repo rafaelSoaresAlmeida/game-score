@@ -20,8 +20,7 @@ exports.handleAuthorization = function (req, resp) {
             console.log(decoded);
             console.log('****************');
             if (decoded) {
-                console.log('--------Next--------');
-                resp.status(200).json({ message: 'Score registred' });
+                resp.status(200).json({ message: 'Score registred', position: '1' });
             }
             else {
                 resp.status(403).json({ message: 'Não autorizado.' });

@@ -1,5 +1,5 @@
 {
-  "tetrisScore": [
+  "tetris": [
     {
       "name": "eu mesmo",
       "score": "1000"
@@ -21,7 +21,7 @@
       "score": "0"
     }
   ],
-  "spaceInvadersScore": [
+  "space": [
     {
       "name": "eu mesmo",
       "score": "20000"

@@ -11,7 +11,10 @@ export const handleAuthentication = (req: Request, resp: Response) => {
       { sub: dbUser.email, iss: 'game-api' },
       apiConfig.secret
     );
-    resp.json({ name: dbUser.name, email: dbUser.email, accessToken: token });
+    resp.json({
+      user: { name: dbUser.name, email: dbUser.email },
+      token: token,
+    });
   } else {
     resp.status(403).json({ message: 'Dádos inválidos.' });
   }

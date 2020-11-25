@@ -20,6 +20,7 @@ import { GameService } from './game.service';
 import { RankService } from '../rank.service';
 import { Score } from '../score.model';
 import { LoginService } from 'src/app/security/login.service';
+import { buildScoreObject } from '../../utils/gameUtils';
 
 @Component({
   selector: 'app-tetris',
@@ -215,12 +216,12 @@ export class TetrisComponent implements OnInit {
     this.ctx.font = '1px Arial';
     this.ctx.fillStyle = 'red';
     this.ctx.fillText('GAME OVER', 1.8, 4);
-    this.score = {
-      name: this.loginService.user.name,
-      email: this.loginService.user.email,
-      score: this.lines.toString(),
-      game: 'tetris',
-    };
+    this.score = buildScoreObject(
+      this.loginService.user.name,
+      this.loginService.user.email,
+      this.lines.toString(),
+      'tetris'
+    );
     console.log(this.score);
     this.rankService
       .persistScore(this.score)

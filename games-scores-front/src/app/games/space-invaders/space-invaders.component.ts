@@ -17,6 +17,7 @@ import { spawnSquadOfEnemies } from '../../utils/gameUtils';
 import { RankService } from '../rank.service';
 import { Score } from '../score.model';
 import { LoginService } from 'src/app/security/login.service';
+import { buildScoreObject } from '../../utils/gameUtils';
 
 @Component({
   selector: 'app-space-invaders',
@@ -115,14 +116,15 @@ export class SpaceInvadersComponent implements OnInit {
   gameOver() {
     cancelAnimationFrame(this.animateId);
     this.gameStarted = false;
-    this.scoreObj = {
-      name: this.loginService.user.name,
-      email: this.loginService.user.email,
-      score: this.score.toString(),
-      game: 'space',
-    };
+    this.scoreObj = buildScoreObject(
+      this.loginService.user.name,
+      this.loginService.user.email,
+      this.score.toString(),
+      'space'
+    );
+    console.log(this.score);
     this.rankService
-      .persistSpaceInvadersScore(this.scoreObj)
+      .persistScore(this.scoreObj)
       .subscribe((response) => console.log(response));
   }
 

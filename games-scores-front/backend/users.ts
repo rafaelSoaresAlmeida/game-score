@@ -22,4 +22,5 @@ export const users: { [key: string]: User } = {
   ),
   'julia@gmail.com': new User('julia@gmail.com', 'julia', '123'),
   'amanda@gmail.com': new User('amanda@gmail.com', 'amanda', '123'),
+  'sobrancela@cansado.com': new User('sobrancela@cansado.com', 'Tired', '123'),
 };

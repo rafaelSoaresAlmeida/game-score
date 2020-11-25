@@ -27,11 +27,12 @@ export class LoginService {
       .pipe(
         tap(
           (resp) => {
-            (this.user = {
-              name: resp.user.name,
-              email: resp.user.email,
-              token: resp.token,
-            }),
+            console.log(resp),
+              (this.user = {
+                name: resp.user.name,
+                email: resp.user.email,
+                token: resp.token,
+              }),
               this.userNameEvent$.emit(this.user.name);
           },
           tap(() => console.log('aquiiiiii' + this.user))

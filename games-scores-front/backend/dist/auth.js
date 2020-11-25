@@ -9,7 +9,10 @@ exports.handleAuthentication = function (req, resp) {
     if (isValid(user)) {
         var dbUser = users_1.users[user.email];
         var token = jwt.sign({ sub: dbUser.email, iss: 'game-api' }, api_config_1.apiConfig.secret);
-        resp.json({ name: dbUser.name, email: dbUser.email, accessToken: token });
+        resp.json({
+            user: { name: dbUser.name, email: dbUser.email },
+            token: token
+        });
     }
     else {
         resp.status(403).json({ message: 'Dádos inválidos.' });

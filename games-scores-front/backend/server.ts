@@ -2,7 +2,7 @@ import * as jsonServer from 'json-server';
 import { Express } from 'express';
 
 import * as fs from 'fs';
-import * as https from 'https';
+import * as http from 'http';
 
 import { handleAuthentication } from './auth';
 import { handleAuthorization } from './authz';
@@ -19,18 +19,23 @@ server.use(middlewares);
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
 
-server.post('/login', handleAuthentication);
-server.post('/tetrisScore', handleAuthorization);
-server.post('/spaceInvadersScore', handleAuthorization);
+server.post('/user/login', handleAuthentication);
+server.post('/score/:game', handleAuthorization);
+
+server.get('/score/:game', function (req, res) {
+  const game = req.param('game');
+  res.jsonp(router.db.get('tetris').value());
+});
 
 // Use default router
 server.use(router);
 
-const options = {
+/* const options = {
   cert: fs.readFileSync('./backend/keys/cert.pem'),
   key: fs.readFileSync('./backend/keys/key.pem'),
-};
+}; */
 
-https.createServer(options, server).listen(3001, () => {
-  console.log('JSON Server is running on https://localhost:3001');
+const port = 5000;
+http.createServer(server).listen(port, () => {
+  console.log(`JSON Server is running on http://localhost:${port}`);
 });

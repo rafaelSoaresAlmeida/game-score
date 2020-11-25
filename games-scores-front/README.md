@@ -30,3 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - authentication - jwt
 
 -- nodemon --watch backend backend/dist/server.js
+
+compile -> delete dist folder in backend path
+-> inside backend path ... do tsc to compile the files and create dist folder
+-> node backend/dist/server
