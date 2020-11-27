@@ -5,6 +5,7 @@ import { tap, filter } from 'rxjs/operators';
 import { User } from './user.model';
 import { NavigationEnd, Router } from '@angular/router';
 import { SCORE_API } from '../app.api';
+import { NotificationService } from '../shared/message/notification.service';
 
 @Injectable()
 export class LoginService {
@@ -12,7 +13,11 @@ export class LoginService {
   lastUrl: string;
   userNameEvent$ = new EventEmitter<string>();
 
-  constructor(private httpClient: HttpClient, private router: Router) {
+  constructor(
+    private httpClient: HttpClient,
+    private router: Router,
+    private notificationService: NotificationService
+  ) {
     this.router.events
       .pipe(filter((e) => e instanceof NavigationEnd))
       .subscribe((e: NavigationEnd) => (this.lastUrl = e.url));
@@ -25,19 +30,15 @@ export class LoginService {
         password: password,
       })
       .pipe(
-        tap(
-          (resp) => {
-            console.log(resp),
-              (this.user = {
-                name: resp.user.name,
-                email: resp.user.email,
-                token: resp.token,
-              }),
-              this.userNameEvent$.emit(this.user.name);
-          },
-          tap(() => console.log('aquiiiiii' + this.user))
-          //   tap(() => this.userNameEvent$.emit(this.user.name))
-        )
+        tap((resp) => {
+          console.log(resp),
+            (this.user = {
+              name: resp.user.name,
+              email: resp.user.email,
+              token: resp.token,
+            }),
+            this.userNameEvent$.emit(this.user.name);
+        })
       );
   }
 

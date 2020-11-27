@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationService } from 'src/app/shared/message/notification.service';
+import { ErrorHandlerResponseService } from '../../shared/errorHandlerResponse.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,9 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private loginService: LoginService,
     private activateRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService,
+    private errorHandlerResponseService: ErrorHandlerResponseService
   ) {}
 
   ngOnInit() {
@@ -32,10 +36,12 @@ export class LoginComponent implements OnInit {
     this.loginService
       .login(this.loginForm.value.email, this.loginForm.value.password)
       .subscribe(
-        (user) => console.log(`Bem vindo, ${user.name}`),
-        (
-          response // HttpErrorResponse
-        ) => console.log(atob(this.navigateTo)),
+        () =>
+          this.notificationService.notify(
+            `Welcome, ${this.loginService.user.name}`
+          ),
+        (errorResponse) =>
+          this.errorHandlerResponseService.handleError(errorResponse),
         () => {
           this.router.navigate([atob(this.navigateTo)]);
         }

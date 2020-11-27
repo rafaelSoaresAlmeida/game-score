@@ -1,46 +1,51 @@
 {
-  "tetris": [
-    {
-      "name": "eu mesmo",
-      "score": "1000"
-    },
-    {
-      "name": "julia",
-      "score": "2000"
-    },
-    {
-      "name": "kotoko",
-      "score": "20"
-    },
-    {
-      "name": "Balada",
-      "score": "150"
-    },
-    {
-      "name": "Brandao",
-      "score": "0"
-    }
-  ],
-  "space": [
-    {
-      "name": "eu mesmo",
-      "score": "20000"
-    },
-    {
-      "name": "julia",
-      "score": "5000"
-    },
-    {
-      "name": "kotoko",
-      "score": "200250"
-    },
-    {
-      "name": "Balada",
-      "score": "0"
-    },
-    {
-      "name": "Brandao",
-      "score": "1"
-    }
-  ]
+  "tetris": {
+    "scores": [
+      {
+        "score": "990",
+        "game": "tetris",
+        "name": "andre balada"
+      },
+      {
+        "score": "990",
+        "game": "tetris",
+        "name": "sobrancela cansado"
+      },
+      {
+        "score": "900",
+        "game": "tetris",
+        "name": "jp Desconforto Muscular"
+      },
+      {
+        "score": "100",
+        "game": "tetris",
+        "name": "lucas lixo"
+      },
+      {
+        "name": "Capitão Tired Horse",
+        "email": "sobrancela@cansado.com",
+        "score": "0",
+        "game": "tetris"
+      }
+    ]
+  },
+  "space": {
+    "scores": [
+      {
+        "score": "552",
+        "game": "space",
+        "name": "Kotoco"
+      },
+      {
+        "score": "300",
+        "game": "space",
+        "name": "Water Box"
+      },
+      {
+        "score": "0",
+        "game": "space",
+        "name": "Molok"
+      }
+    ]
+  }
 }
